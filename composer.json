@@ -1,9 +1,9 @@
 {
-    "name": "immobiliare/sentry-php",
+    "name": "leshikhacker/sentry-php",
     "type": "library",
-    "description": "Fork of a PHP client for Sentry (http://getsentry.com) that work also with php5.2",
+    "description": "Fork of the fork of a PHP client for Sentry (http://getsentry.com) that work also with php5.2",
     "keywords": ["log", "logging", "sentry", "sentry-php", "php52", "php 5.2"],
-    "homepage": "https://github.com/immobiliare/sentry-php",
+    "homepage": "https://github.com/leshikhacker/sentry-php",
     "license": "BSD-3-Clause",
     "authors": [
         {
