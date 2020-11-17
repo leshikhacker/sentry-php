@@ -16,7 +16,7 @@
 
 class Raven_Client
 {
-    const VERSION = '1.6.3';
+    const VERSION = '1.6.4';
 
     const PROTOCOL = '6';
 
@@ -133,13 +133,21 @@ class Raven_Client
      */
     public function install()
     {
+        global $argv;
         if ($this->error_handler) {
             throw new Raven_Exception(sprintf('%s->install() must only be called once', get_class($this)));
         }
         $this->error_handler = new Raven_ErrorHandler($this, false, $this->error_types);
-        $this->error_handler->registerExceptionHandler();
-        $this->error_handler->registerErrorHandler();
-        $this->error_handler->registerShutdownFunction();
+        if($argv[1] == 'enable-ex') {
+            $this->error_handler->registerExceptionHandler();
+        }
+        if($argv[2] == 'enable-err') {
+            $this->error_handler->registerErrorHandler();
+        }
+        if($argv[3] == 'enable-shut') {
+            $this->error_handler->registerShutdownFunction();
+        }
+
         return $this;
     }
 

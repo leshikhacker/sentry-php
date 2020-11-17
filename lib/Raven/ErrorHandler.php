@@ -36,12 +36,12 @@ class Raven_ErrorHandler
     private $send_errors_last = false;
     private $fatal_error_types = array(
         E_ERROR,
-        E_PARSE,
+//        E_PARSE,
         E_CORE_ERROR,
-        E_CORE_WARNING,
+//        E_CORE_WARNING,
         E_COMPILE_ERROR,
-        E_COMPILE_WARNING,
-        E_STRICT,
+//        E_COMPILE_WARNING,
+//        E_STRICT,
     );
 
     /**
@@ -101,6 +101,11 @@ class Raven_ErrorHandler
         }
 
         if ($this->call_existing_error_handler) {
+            var_dump('handleError: $this->call_existing_error_handler');
+            var_dump('$type');
+            var_dump($type);
+            var_dump('$message');
+            var_dump($message);
             if ($this->old_error_handler !== null) {
                 return call_user_func(
                     $this->old_error_handler,
@@ -165,6 +170,9 @@ class Raven_ErrorHandler
      */
     public function registerErrorHandler($call_existing = true, $error_types = null)
     {
+        var_dump('registerErrorHandler: $error_types & $this->error_types');
+        var_dump($error_types);
+        var_dump($this->error_types);
         if ($error_types !== null) {
             $this->error_types = $error_types;
         }
